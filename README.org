@@ -1,0 +1,22 @@
+#+title: README
+
+* Description
+The simplest quiz game made to demonstrate Clojure(+script) capabilities.
+* Launch
+** Backend
+With ~cider-jack-in-clj~ -> ~clojure-clj~ or:
+#+begin_src shell
+clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version "1.0.0"} cider/cider-nrepl {:mvn/version "0.30.0"} refactor-nrepl/refactor-nrepl {:mvn/version "3.6.0"}} :aliases {:cider/nrepl {:main-opts ["-m" "nrepl.cmdline" "--middleware" "[refactor-nrepl.middleware/wrap-refactor,cider.nrepl/cider-middleware]"]}}}' -M:cider/nrepl
+#+end_src
+** Frontend
+With ~cider-jack-in-cljs~ -> ~shadow-cljs~ -> ~frontend~ or:
+#+begin_src shell
+shadow-cljs watch frontend
+#+end_src
+* Rules
+- Trivial is a quizz game. Each ~trivial~ is a pair of strings: question and possible answers (each of them are equivalent, no multiple answers allowed) and number of points user gets for the right answer
+- It has the backend and the frontend part. The backend works via Node. The frontend via just clojurescript->javascript.
+- When players visit the game's front page (waiting lobby) the backend gets instantly notified.
+- Players can see how many of them are in the waiting lobby now and can press "Ready" when they are ready. The list of ready players instantly send to the backend.
+- The backend's admin has to press "Start" (send some event in GUI or REPL) to start the game for the players
+- Game consists of ~rounds~. ~round~ contains multiple ~trivials~ There can be only one round in the game.

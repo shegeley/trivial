@@ -1,0 +1,35 @@
+{
+  "dependencies": {
+    "@emotion/react": "11.11.0",
+    "@emotion/styled": "11.11.0",
+    "@js-joda/core": "3.2.0",
+    "@js-joda/locale_en-us": "3.1.1",
+    "@js-joda/timezone": "2.5.0",
+    "@mui/base": "^5.0.0-beta.2",
+    "@mui/lab": "^5.0.0-alpha.132",
+    "@mui/material": "^5.11.12",
+    "@mui/system": "^5.13.2",
+    "@mui/x-date-pickers": "^6.5.0",
+    "@testing-library/dom": "^9.3.0",
+    "@testing-library/react": "^14.0.0",
+    "create-react-class": "^15.7.0",
+    "highlight.js": "11.2.0",
+    "katex": "0.12.0",
+    "markdown-it": "12.3.2",
+    "markdown-it-block-image": "0.0.3",
+    "markdown-it-footnote": "3.0.3",
+    "markdown-it-texmath": "0.9.7",
+    "markdown-it-toc-done-right": "4.2.0",
+    "marked": "^5.0.2",
+    "punycode": "2.1.1",
+    "react": "~17.0.2",
+    "react-dom": "~17.0.2",
+    "react-highlight.js": "^1.0.7",
+    "ws": "^8.13.0",
+    "xhr2": "^0.2.1"
+  },
+  "devDependencies": {
+    "shadow-cljs": "^2.23.3",
+    "source-map-support": "^0.5.21"
+  }
+}

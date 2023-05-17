@@ -1,0 +1,12 @@
+out/frontend/js
+out/devcards/js
+.clj-kondo
+.cljs_node_repl
+.cpcache
+.env
+.lsp
+.nrepl-port
+.shadow-cljs
+node_modules
+package-lock.json
+.clerk

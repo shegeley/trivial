@@ -1,0 +1,36 @@
+{:deps true
+
+ :nrepl {:port 9000}
+
+ :builds
+ {:frontend {:target :browser
+             :output-dir "out/frontend/js"
+             :modules {:main {:entries [trivial.frontend.core]}}
+             :js-options {:anon-fn-naming-policy :unmapped}
+             :devtools {:enabled true
+                        :http-root "out/frontend"
+                        :http-port 3005
+                        :closure-defines {"goog.DEBUG" true}
+                        :repl-pprint true}
+             :dev {:compiler-options {:source-map true}}
+             :release {:compiler-options {:optimizations :advanced}}}
+
+  :devcards {:target :browser
+             :ns-regexp ".*card.*"
+             :output-dir "out/devcards/js"
+             :devtools {:enabled true
+                        :http-root "out/devcards"
+                        :http-port 3006
+                        :repl-pprint true}
+             :modules {:main {:init-fn trivial.frontend.cards/main}}
+             :runner-ns trivial.frontend.cards ; must have init fn to run
+             :js-options {:resolve {"devcards-marked" {:target :npm :require "marked"}
+                                    "devcards-syntax-highlighter" {:target :npm :require "highlight.js"}}}
+             :compiler-options {:devcards true}}
+  ;; NOTE: if backend is on clojurescript also
+  ;; :backend {:target :node-script
+  ;;           :output-to "out/backend/main.js"
+  ;;           :output-dir "out/backend"
+  ;;           :devtools {:enabled false}
+  ;;           :main trivial.backend.core/main!}
+  }}
