@@ -1,6 +1,7 @@
 (ns trivial.backend.db
   (:require
    [clojure.java.io :as io]
+   [trivial.shared.utils :refer [deep-merge]]
    [trivial.shared.spec :as spec]
    [xtdb.api :as xt]))
 
@@ -20,6 +21,11 @@
 
 (defonce xtdb-node
   (start-xtdb!))
+
+(defn save! [x]
+  (let [xt-id (keyword (hexify (str (hash x))))
+        p (deep-merge {:xt/id xt-id} x)]
+    (xt/submit-tx xtdb-node [[::xt/put p]])))
 
 (defn games*
   []

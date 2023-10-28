@@ -3,7 +3,7 @@
    [org.httpkit.server :as http-kit
     :refer [on-close on-receive with-channel]]
    [trivial.backend.db :refer
-    [hexify xtdb-node]]
+    [hexify xtdb-node save!]]
    [trivial.shared.com :as com]
    [trivial.shared.core :refer
     [-game-template- send*]]
@@ -55,17 +55,11 @@
   [_ _ channel state
    {end? ::spec/end?
     :as msg}]
-  (when (= true end?)
-    (let [xt-id (keyword (hexify (str (hash msg))))
-          p (deep-merge {:xt/id xt-id} msg)]
-      (xt/submit-tx
-       xtdb-node
-       [[::xt/put p]])))
+  (when (= true end?) (save! msg))
   (assoc state channel msg))
 
 (defmethod handler
   [:server :outcoming]
-
   [_ _ channel old new]
   (get new channel))
 
